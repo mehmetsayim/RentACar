@@ -1,0 +1,78 @@
+﻿@model PaymentViewModel
+@{ViewData["title"] = "Ödeme";
+}
+
+<form method="post">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="d-none col-md-5 d-md-flex justify-content-center">
+                    <img src="~/images/register.PNG" class="img-fluid" height="120" />
+                </div>
+                <div class="col-md-7">
+                    <div class="mb-3">
+                        <label asp-for="CardNumber" class="form-label"></label>
+                        <input asp-for="CardNumber" class="form-control" />
+                        <span asp-validation-for="CardNumber"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CardHolderName" class="form-label"></label>
+                        <input asp-for="CardHolderName" class="form-control" />
+                        <span asp-validation-for="CardHolderName"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Expiration" class="form-label"></label>
+                        <div class="d-flex">
+                            <select class="custom-select" asp-for="Month">
+                                @for (int i = 1; i <= 12; i++)
+                                {
+                                    <option>@i.ToString("00")</option>
+                                }
+                            </select>
+                            <select class="custom-select" asp-for="Year">
+                                @for (int i = DateTime.Today.Year; i <= DateTime.Today.Year + 10; i++)
+                                {
+                                    <option>@i.ToString()</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CV2" class="form-label"></label>
+                        <input asp-for="CV2" class="form-control" />
+                        <span asp-validation-for="CV2"></span>
+                    </div>
+                    <hr />
+
+                    <div asp-validation-summary="ModelOnly">
+
+                    </div>
+                    <div>
+                        <span class="fade" id="bankName"></span> <span class="fade" id="schemeName"></span> 
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-shopping-cart"></i> Devam
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(() => {
+            $('#CardNumber').on('blur change', (evt) => {
+                $.getJSON(`https://lookup.binlist.net/${$('#CardNumber').val().substring(0, 6)}`)
+                    .then((response) => {
+                        $('#bankName').html(response.bank.name).addClass('show');
+                        $('#schemeName').html(response.scheme).addClass('show');
+                    })
+                    .catch((response) => {
+                        
+                    });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,24 @@
+﻿@model Comment
+<div class="py-3">
+    <form asp-controller="Account" asp-action="Comment" method="post">
+        <input type="hidden" asp-for="CarId" />
+        <div class="form-group mb-3">
+            <label asp-for="Text"></label>
+            <textarea asp-for="Text" class="form-control"></textarea>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Rate"></label>
+            <select asp-for="Rate" class="form-control">
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">
+            <i class="fa fa-comment"></i>
+            Gönder
+        </button>
+    </form>
+</div>

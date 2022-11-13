@@ -1,0 +1,52 @@
+﻿@model ContactUsViewModel
+@{
+    ViewData["Title"] = "Bize Ulaşın";
+}
+<h1>@ViewData["Title"]</h1>
+@if (TempData["messageSent"] != null)
+{
+    <div class="alert alert-success">
+        <h2>Teşekkürler</h2>
+        <p>Mesajınız tarafımıza ulaşmıştır..... </p>
+    </div>
+}
+<form method="post">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="form-group">
+                <label class="form-label" asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="EMail"></label>
+                <input class="form-control" asp-for="EMail" />
+                <span asp-validation-for="EMail"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="PhoneNumber"></label>
+                <input class="form-control" asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Message"></label>
+                <textarea class="form-control" asp-for="Message"></textarea>
+                <span asp-validation-for="Message"></span>
+            </div>
+            <hr />
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-send"></i> GÖNDER
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ipsum a ante pretium tincidunt. Quisque quis vulputate sem. Aenean at dolor imperdiet, fermentum magna et, feugiat lacus. Nulla facilisi. Suspendisse vitae vulputate dolor. In consequat pretium erat vel euismod. Phasellus turpis quam, imperdiet nec tortor non, molestie euismod velit. Phasellus pretium convallis blandit. Vestibulum malesuada leo turpis, ultrices interdum mi dictum ut. Nullam rutrum suscipit lacus, eget commodo magna commodo et. Fusce posuere molestie ex vitae porta. Cras bibendum arcu et neque iaculis, eget lacinia ex pellentesque. </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ipsum a ante pretium tincidunt. Quisque quis vulputate sem. Aenean at dolor imperdiet, fermentum magna et, feugiat lacus. Nulla facilisi. Suspendisse vitae vulputate dolor. In consequat pretium erat vel euismod. Phasellus turpis quam, imperdiet nec tortor non, molestie euismod velit. Phasellus pretium convallis blandit. Vestibulum malesuada leo turpis, ultrices interdum mi dictum ut. Nullam rutrum suscipit lacus, eget commodo magna commodo et. Fusce posuere molestie ex vitae porta. Cras bibendum arcu et neque iaculis, eget lacinia ex pellentesque. </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ipsum a ante pretium tincidunt. Quisque quis vulputate sem. Aenean at dolor imperdiet, fermentum magna et, feugiat lacus. Nulla facilisi. Suspendisse vitae vulputate dolor. In consequat pretium erat vel euismod. Phasellus turpis quam, imperdiet nec tortor non, molestie euismod velit. Phasellus pretium convallis blandit. Vestibulum malesuada leo turpis, ultrices interdum mi dictum ut. Nullam rutrum suscipit lacus, eget commodo magna commodo et. Fusce posuere molestie ex vitae porta. Cras bibendum arcu et neque iaculis, eget lacinia ex pellentesque. </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ipsum a ante pretium tincidunt. Quisque quis vulputate sem. Aenean at dolor imperdiet, fermentum magna et, feugiat lacus. Nulla facilisi. Suspendisse vitae vulputate dolor. In consequat pretium erat vel euismod. Phasellus turpis quam, imperdiet nec tortor non, molestie euismod velit. Phasellus pretium convallis blandit. Vestibulum malesuada leo turpis, ultrices interdum mi dictum ut. Nullam rutrum suscipit lacus, eget commodo magna commodo et. Fusce posuere molestie ex vitae porta. Cras bibendum arcu et neque iaculis, eget lacinia ex pellentesque. </p>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

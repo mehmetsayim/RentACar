@@ -1,0 +1,60 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Yeni Üyelik";
+}
+<form method="post">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="d-none col-md-5 d-md-flex justify-content-center">
+                    <img src="~/images/register.PNG" class="img-fluid" height="120" />
+                </div>
+                <div class="col-md-7">
+                    <div class="mb-3">
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PasswordVerify" class="form-label"></label>
+                        <input asp-for="PasswordVerify" class="form-control" />
+                        <span asp-validation-for="PasswordVerify"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BirthDate" class="form-label"></label>
+                        <input asp-for="BirthDate" class="form-control" />
+                        <span asp-validation-for="BirthDate"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Gender" class="form-label"></label>
+                        <select class="form-control" asp-items="@Html.GetEnumSelectList<Genders>()"></select>
+                        <span asp-validation-for="Gender"></span>
+                    </div>
+                    <hr />
+
+                    <div asp-validation-summary="ModelOnly">
+
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-user-plus"></i> KAYDOL
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

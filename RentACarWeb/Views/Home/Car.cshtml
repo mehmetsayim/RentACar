@@ -1,0 +1,93 @@
+﻿@model RentACarData.Car
+@inject IConfiguration configuration
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = Model.Name;
+    var categories = new SelectList(Model.Categories, "Id", "Name");
+    var userId = Guid.Empty;
+    if (User.Identity.IsAuthenticated)
+        userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+}
+<div class="row mb-3">
+    <div class="col-12 col-md-6">
+        <img id="productImage" src="@Model.ImageSrc" class="img-fluid" />
+        <div class="py-2 d-flex justify-content-center">
+            @foreach (var carImage in Model.CarImages)
+            {
+                <img src="data:image/jpeg;base64, @Convert.ToBase64String(carImage.Image)" height="90" class="mx-1 preview-image @((Model.CarImages.FirstOrDefault() == carImage ? "active" : ""))" />
+            }
+        </div>
+    </div>       
+</div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+            Açıklamalar
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="installments-tab" data-bs-toggle="tab" data-bs-target="#installments-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+            Taksit Seçenekleri
+        </button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="desc-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <blockquote>
+            @Model.Descriptions
+        </blockquote>
+    </div>
+    <div class="tab-pane fade" id="installments-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <div class="row">
+            @foreach (var creditCard in ViewBag.CreditCards as IEnumerable<CreditCardViewModel>)
+            {
+                <div class="col-12 col-md-3 p-4">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    <img src="https://images.hepsiburada.net/assets/sardes/rewardlogo/@(creditCard.Code).svg"
+                                         height="48" width="120" />
+                                </td>
+                            </tr>
+                            @{
+                                var monthNumber = 1;
+                            }
+                            @foreach (var installmentRate in creditCard.Installments)
+                            {
+                                monthNumber++;
+                                if (installmentRate.Exists)
+                                {
+                                   
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>@monthNumber</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+   
+
+
+@section Scripts {
+    <script>
+        $(() => {
+            $('.preview-image').on('click', (evt) => {
+                $('#productImage').attr('src', $(evt.currentTarget).attr('src'));
+                $('.preview-image').removeClass('active');
+                $(evt.currentTarget).addClass('active');
+            });
+        });
+    </script>
+}

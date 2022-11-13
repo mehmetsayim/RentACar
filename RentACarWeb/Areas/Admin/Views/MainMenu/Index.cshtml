@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RentACarData.MainMenu>
+@{
+    ViewData["Title"] = "Menü Tanımları";
+}
+
+<div class="d-flex">
+    <a asp-action="Create" class="btn btn-primary ml-auto">
+        <i class="fa fa-plus"></i>
+        Yeni Kayıt
+    </a>
+</div>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th width="50%">@Html.DisplayNameFor(model => model.Name)</th>
+                    <th width="10%">@Html.DisplayNameFor(model => model.DateCreated)</th>
+                    <th width="10%">@Html.DisplayNameFor(model => model.Enabled)</th>
+                    <th width="10%">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.DateCreated.ToLocalTime().ToShortDateString()</td>
+                        <td class="text-center">
+                            @if (item.Enabled)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-remove text-danger"></i>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-link text-danger rentacar-remove" asp-action="Remove" asp-route-id="@item.Id">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            <a class="btn btn-link text-info" asp-action="Edit" asp-route-id="@item.Id">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(() => {
+        $('.rentacar-remove').on('click', (e) => {
+            Swal.fire({
+                icon: 'warning',
+                title: 'UYARI!',
+                html: 'Kayıt tamamen silinecektir.',
+                showCancelButton: true,
+                cancelButtonText: 'İPTAL',
+                confirmButtonText: 'SİL'
+            }).then((result) => {
+                if (result.value) {
+                    window.location = $(e.currentTarget).attr('href');
+                }
+            });
+            return false;
+        });
+    })
+
+
+</script>
+}

@@ -1,0 +1,53 @@
+﻿@model RentACarData.ApplicationUser
+    <ul class="nav">
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-user"></i>
+                    Hoş Geldiniz Sn. @User.FindFirst("FullName")
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    @if (User.IsInRole("Administrators"))
+                    {
+                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Yönetim Paneli</a></li>
+                    }
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+                </ul>
+            </li>
+            @if (Model is not null)
+            {
+                <li class="nav-item">
+                    <a class="nav-link position-relative" asp-controller="Account" asp-action="ShoppingCart">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="position-absolute start-100 translate-middle badge badge-warning text-white" style="top: 8px;">
+                            @Model.ShoppingCartItems.Count().ToString("n0")
+                        </span>
+                    </a>
+                </li>
+            }
+
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">
+                    <i class="fa fa-user-plus"></i> Yeni Üyelik
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
+                    <i class="fa fa-sign-in-alt"></i> Giriş
+                </a>
+            </li>
+        }
+        <li class="nav-item">
+            <a class="nav-link search-trigger" href="#">
+                <i class="fa fa-search"></i>
+            </a>
+        </li>
+    </ul>

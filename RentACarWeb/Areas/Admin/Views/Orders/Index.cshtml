@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["title"] = "Yeni Siparişler";
+}
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Görsel</th>
+                    <th>Tarih</th>
+                    <th>Müşteri</th>
+                    <th>Tutar</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex " style="padding-left: 38px;">
+                                @foreach (var orderItem in order.OrderItems.Take(3))
+                                {
+                                    <img src="@orderItem.Car!.ImageSrc" class="rounded-circle p-2 bg-white border shadow-sm position-relative" height="80" style="margin-left:-18px;" />
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            @order.DateCreated.ToShortDateString()
+                        </td>
+                        <td>
+                            <h4>@order.ApplicationUser.Name</h4>
+                            <a href="mailto:@order.ApplicationUser.UserName">@order.ApplicationUser.UserName</a>
+                        </td>
+                        <td>
+                            @order.GrandTotal.ToString("c2")
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@order.Id">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+</div>

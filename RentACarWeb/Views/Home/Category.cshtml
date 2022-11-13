@@ -1,0 +1,59 @@
+﻿@model RentACarData.Category
+@using X.PagedList.Mvc; //import this so we get our HTML Helper
+@using X.PagedList; //import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = Model.Name;
+    var page = (int?)ViewBag.Page ?? 1;
+    var pageSize = 12;
+    var cars = Model.Cars.Where(p => p.Enabled).ToPagedList(page, pageSize);
+}
+<h2>@Model.MainMenu.Name / @Model.Name</h2>
+<hr />
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var car in cars)
+    {
+        <div class="col">
+            <div class="card h-100 product-card">
+                <img class="card-img-top" src="@car.ImageSrc" />
+                <div class="card-body">
+                    <h4 class="card-title">@car.Name</h4>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="card-text text-decoration-line-through small">@car.Price.ToString("c2")</p>
+                        </div>
+                        <a asp-route="product" asp-route-name="@car.Name.ToSafeUrlString()" asp-route-id="@car.Id" class="btn btn-info ms-auto">
+                            <i class="fa fa-search"></i>
+                            İncele
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<nav class="d-flex justify-content-center py-2">
+    <ul class="pagination">
+        <li class="page-item @(cars.HasPreviousPage ? "": "disabled")">
+            <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@(cars.HasPreviousPage ? page-1 : page)">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (int i = 1; i <= cars.PageCount; i++)
+        {
+            <li class="page-item @(i == page ? "active" : "")">
+                <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@i">@(i)</a>
+            </li>
+        }
+
+        <li class="page-item @(cars.HasNextPage ? "": "disabled")">
+            <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@(cars.HasNextPage ? page+1 : page)">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

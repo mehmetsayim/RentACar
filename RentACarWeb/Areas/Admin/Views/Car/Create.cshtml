@@ -1,0 +1,25 @@
+﻿@model RentACarData.Car
+@{
+    ViewData["Title"] = "Araç Ekleme";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">Araç eklemek için aşağıdaki formu kullanınız</div>
+        <form method="post" enctype="multipart/form-data">
+            <partial name="_Fields" model="@Model" />
+            <hr />
+            <a class="btn btn-link" asp-action="Index">İptal</a>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i>
+                Kaydet
+            </button>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_SummernotePartial" />
+    <partial name="_ImagePreviewPartial" />
+}

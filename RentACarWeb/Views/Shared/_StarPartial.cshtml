@@ -1,0 +1,22 @@
+﻿@model double
+@{ 
+    var a = Math.Ceiling(Model);
+}
+<div class="d-flex justify-content-end text-warning">
+    @for (int i = 1; i <= 5; i++)
+    {
+        if (i < a || i == Model)
+        {
+            <i class="fa-solid fa-star"></i>
+        }
+        else if (i > a)
+        {
+            <i class="fa-regular fa-star"></i>
+        }
+        else
+        {
+            <i class="fa-solid fa-star-half-stroke"></i>
+        }
+    }
+
+</div>

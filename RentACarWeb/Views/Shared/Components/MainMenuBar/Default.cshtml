@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MainMenu>
+
+@foreach (var mainMenu in Model.Where(p => p.Categories.Any()))
+{
+    <li>
+        <a href="#">@mainMenu.Name</a>
+        <ul class="sub-menu">
+            @foreach (var category in mainMenu.Categories)
+            {
+                <li>
+                    <a asp-route="category" asp-route-name="@category.Name.ToSafeUrlString()" asp-route-id="@category.Id">@category.Name</a>
+                </li>
+            }
+        </ul>
+    </li>
+}

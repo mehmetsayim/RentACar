@@ -1,0 +1,57 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RentACar</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="h-100">
+    <form novalidate method="post" class="h-100">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="card shadow col-12 col-md-4" style="min-width:320px;">
+                <div class="card-body">
+                    <h1 class="text-center text-info mb-3">
+                        <i class="fa fa-user-circle fa-2x"></i>
+                    </h1>
+                    <h2 class="text-center">MVC Store</h2>
+                    <p>Güvenli ve hızlı alışverişin adresi</p>
+                    <h4 class="text-center">Kullanıcı Girişi</h4>
+                    @if (!ViewContext.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    }
+                    <div class="mb-3">
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control">
+                        <span asp-validation-for="UserName"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input asp-for="RememberMe" class="form-check-input">
+                        <label class="form-check-label" asp-for="RememberMe"></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-sign-in"></i>
+                        Giriş
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿@model RentACarData.MainMenu
+@{
+    ViewData["Title"] = "Menü Güncelleme";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">Menü güncellemek için aşağıdaki formu kullanınız</div>
+        <form method="post">
+            <input type="hidden" asp-for="DateCreated" />
+            <partial name="_Fields" model="@Model" />
+            <hr />
+            <a class="btn btn-link" asp-action="Index">İptal</a>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i>
+                Kaydet
+            </button>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

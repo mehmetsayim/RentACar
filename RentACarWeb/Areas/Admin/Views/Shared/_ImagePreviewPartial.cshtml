@@ -1,0 +1,15 @@
+﻿<script>
+        $(() => {
+            $('#ImageFiles').on('change', (evt) => {
+                $('#imagePreview').html('');
+                const item = document.getElementById('ImageFiles')
+                for (var i = 0; i < item.files.length; i++) {
+                    var fileReader = new FileReader();
+                    fileReader.onloadend = (e) => {
+                        $('#imagePreview').append(`<img height="160" class="mr-2 my-4" src="${e.currentTarget.result}" />`);
+                    };
+                    fileReader.readAsDataURL(item.files[i]);
+                }
+            })
+        })
+</script>

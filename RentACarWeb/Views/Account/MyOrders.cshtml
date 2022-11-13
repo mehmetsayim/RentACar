@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["title"] = "Siparişlerim";
+}
+
+<div class="container">
+
+    @foreach (var order in Model)
+    {
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="py-4 d-flex">
+                    <div class="mx-1">
+                        @switch (order.Status)
+                        {
+                            case OrderStatus.New:
+                                <i class="bi bi-star-fill text-info h2"></i>
+                                break;
+                            case OrderStatus.Shipped:
+                                <i class="bi bi-check text-success h2"></i>
+                                break;
+                            case OrderStatus.Cancelled:
+                                <i class="bi bi-x text-danger h2"></i>
+                                break;
+                            case OrderStatus.Void:
+                                <i class="bi bi-x text-danger h2"></i>
+                                break;
+                            case OrderStatus.OnRoute:
+                                <i class="bi bi-truck text-warning h2"></i>
+                                break;
+                            default:
+                                break;
+                        }
+                    </div>
+                    <div class="mx-1">@order.DateCreated.ToShortDateString()</div>
+                    <div class="mx-1 ml-auto h4 text-success">@order.GrandTotal.ToString("c2")</div>
+                    <i class="bi bi-plus-circle" data-bs-toggle="collapse" data-bs-target="#order_@order.Id"></i>
+                </div>
+                <div id="order_@order.Id" class="collapse border-top">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Foto:
+                                </th>
+                                <th>
+                                    Ürün Adı:
+                                </th>
+                                <th>
+                                    Miktar:
+                                </th>
+                                <th>
+                                    Fiyat:
+                                </th>
+                                <th>
+                                    Tutar
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var orderItem in order.OrderItems)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@orderItem.Car.ImageSrc" height="90" class="p-1 border shadow-sm bg-white rounded-circle" />
+                                    </td>
+                                    <td>
+                                        @orderItem.Car.Name
+                                    </td>
+                                    <td>
+                                        @orderItem.Quantity.ToString("n0")
+                                    </td>
+                                    <td>
+                                        @orderItem.Price.ToString("c2")
+                                    </td>
+                                    <td>
+                                        @orderItem.LineTotal.ToString("c2")
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

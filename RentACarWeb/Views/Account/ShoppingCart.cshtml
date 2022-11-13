@@ -1,0 +1,136 @@
+﻿@model ApplicationUser
+@inject IConfiguration configuration
+@{
+    ViewData["Title"] = "Sepetiniz";
+    var counter = 0;
+}
+@if (Model.ShoppingCartItems.Any())
+{
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            No.
+                        </th>
+                        <th>
+                            Foto
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Adet
+                        </th>
+                        <th>
+                            Tutar
+                        </th>
+                        <th>
+                            İşlem
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var shoppingCartItem in Model.ShoppingCartItems.GroupBy(p => p.Car)
+             .Select(p => new
+             {
+                 Product = p.Key,
+                 Quantity = p.Count(),
+                 
+             }))
+                    {
+                        <tr>
+                            <td>
+                                @(++counter)
+                            </td>
+                            <td>
+                                <img src="@shoppingCartItem.Product!.ImageSrc" height="80" />
+                            </td>
+                            <td>
+                                <h4>@shoppingCartItem.Product.Name</h4>
+                                <small>@string.Join(", ", shoppingCartItem.Product.Categories.Select(p => p.Name))</small>
+                                <h6 class="text-decoration-line-through">@shoppingCartItem.Product.Price.ToString("c2")</h6>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="RemoveFromCart" asp-route-id="@shoppingCartItem.Product.Id">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
+                                    <input type="text" class="form-control border-secondary" name="Quantity" style="max-width:64px;text-align:center" value="@shoppingCartItem.Quantity.ToString("n0")" />
+                                    <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="AddToCart" asp-route-id="@shoppingCartItem.Product.Id">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+
+                            </td>
+                            
+                            <td>
+                                <a class="btn btn-link text-danger" asp-controller="Home" asp-action="RemoveAllFromCart" asp-route-id="@shoppingCartItem.Product.Id">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end">
+                            Toplam:
+                        </td>
+                        <td class="text-monospace text-end text-success">
+                            <a class="btn btn-danger" id="clearCart" asp-controller="Home" asp-action="ClearCart">
+                                <i class="fa fa-close"></i>
+                                Sepeti Boşalt
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-text">
+                        
+                        <a class="btn btn-primary w-100">ÖDEME YAP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h2>
+        Sepetinizde henüz ürün bulunmamaktadır!
+    </h2>
+}
+
+@section scripts {
+    <script>
+        $(() => {
+            $('#clearCart').on('click', (evt) => {
+                Swal
+                    .fire({
+                        icon: 'warning',
+                        title: 'UYARI!',
+                        html: 'Tüm ürünler sepetinizden çıkarılacaktır!',
+                        showCancelButton: true,
+                        confirmButtonText : 'Temizle',
+                        cancelButtonText : 'İptal'
+                    })
+                    .then((result) => {
+                        if (result.value) {
+                            window.location = '/home/clearcart';
+                        }
+                    });
+
+                return false;
+            });
+        });
+    </script>
+
+}
