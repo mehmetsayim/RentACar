@@ -3,14 +3,14 @@
         @if (User.Identity.IsAuthenticated)
         {
 
-            <li class="dropdown">
+            <li class="dropdown navbar-nav ml-auto">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-user nanav-link"></i>
                     Hoş Geldiniz Sn. @User.FindFirst("FullName")
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">İşlemler</a></li>
+                    <li><a class="dropdown-item" href="#">Diğer İşlemler</a></li>
                     @if (User.IsInRole("Administrators"))
                     {
                         <li><a class="dropdown-item" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Yönetim Paneli</a></li>
@@ -21,7 +21,7 @@
             </li>
             @if (Model is not null)
             {
-                <li class="nav-item">
+                <li class="nav-item navbar-nav ml-auto">
                     <a class="nav-link position-relative" asp-controller="Account" asp-action="ShoppingCart">
                         <i class="fa fa-shopping-cart"></i>
                         <span class="position-absolute start-100 translate-middle badge badge-warning text-white" style="top: 8px;">
@@ -34,7 +34,7 @@
         }
         else
         {
-            <li class="nav-item">
+        <li class="nav-item navbar-nav ml-auto">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">
                     <i class="fa fa-user-plus"></i> Yeni Üyelik
                 </a>
@@ -45,9 +45,9 @@
                 </a>
             </li>
         }
-        <li class="nav-item">
-            <a class="nav-link search-trigger" href="#">
-                <i class="fa fa-search"></i>
+    <li class="nav-item navbar-nav ml-auto">
+            <a class="nav-link search-trigger " href="#">
+                <i class="fa fa-search" ></i>
             </a>
         </li>
     </ul>
