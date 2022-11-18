@@ -12,27 +12,27 @@
     <link href="~/css/login.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="h-100">
-    <form novalidate method="post" class="h-100">
+<body class="h-100 ">
+    <form novalidate method="post" class="h-100 ">
         <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="card shadow col-12 col-md-4" style="min-width:320px;">
+            <div class="card shadow col-12 col-md-4 bg-dark" style="min-width:320px; ">
                 <div class="card-body">
                     <h1 class="text-center text-info mb-3">
                         <i class="fa fa-user-circle fa-2x"></i>
                     </h1>
-                    <h2 class="text-center">MVC Store</h2>
-                    <p>Güvenli ve hızlı alışverişin adresi</p>
+                    <h2 class="text">Rent A Car</h2>
+                    <p class="text-center">Güvenli ve hızlı Araba Kiralamının Tek Adresi</p>
                     <h4 class="text-center">Kullanıcı Girişi</h4>
                     @if (!ViewContext.ModelState.IsValid)
                     {
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                     }
                     <div class="mb-3">
-                        <label asp-for="UserName" class="form-label"></label>
+                        <label asp-for="UserName" class="form-label" ></label>
                         <input asp-for="UserName" class="form-control">
                         <span asp-validation-for="UserName"></span>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label asp-for="Password" class="form-label"></label>
                         <input asp-for="Password" class="form-control">
                         <span asp-validation-for="Password"></span>

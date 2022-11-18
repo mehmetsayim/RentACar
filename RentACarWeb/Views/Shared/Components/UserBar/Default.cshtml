@@ -23,8 +23,8 @@
             {
                 <li class="nav-item navbar-nav ml-auto">
                     <a class="nav-link position-relative" asp-controller="Account" asp-action="ShoppingCart">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span class="position-absolute start-100 translate-middle badge badge-warning text-white" style="top: 8px;">
+                        <i class="fa fa-shopping-cart "></i>
+                        <span class="position-absolute start-100 translate-middle badge badge-warning text-white " style="top: 8px;">
                             @Model.ShoppingCartItems.Count().ToString("n0")
                         </span>
                     </a>
@@ -35,19 +35,19 @@
         else
         {
         <li class="nav-item navbar-nav ml-auto">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">
+                <a class="nav-link " asp-area="" asp-controller="Account" asp-action="Register">
                     <i class="fa fa-user-plus"></i> Yeni Üyelik
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
+        <li class="nav-item navbar-nav ml-auto">
+                <a class="nav-link " asp-area="" asp-controller="Account" asp-action="Login">
                     <i class="fa fa-sign-in-alt"></i> Giriş
                 </a>
             </li>
         }
     <li class="nav-item navbar-nav ml-auto">
             <a class="nav-link search-trigger " href="#">
-                <i class="fa fa-search" ></i>
+                <i class="fa fa-search m-2" ></i>
             </a>
         </li>
     </ul>
