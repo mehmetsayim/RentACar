@@ -83,84 +83,20 @@ namespace RentACarWeb.Controllers
             var model = await context.Categories.FindAsync(id);
             ViewBag.Page = page;
             return View(model);
-        }
+        }  
 
         [HttpGet]
 
-        public async Task<IActionResult> Product(Guid id)
+        public IActionResult Car()
+        {
+            List<Car> model = context.Cars.ToList();
+            return View(model);
+        }
+
+        public async Task<IActionResult> Detay(Guid id, int? page)
         {
             var model = await context.Cars.FindAsync(id);
-            ViewBag.CreditCards = new[]
-            {
-                new CreditCardViewModel
-                {
-                    Code = "bonus",
-                    Installments =  new[] {
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.06m, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.15m, Exists = true },
-                    }.ToList()
-                },
-                new CreditCardViewModel
-                {
-                    Code = "world",
-                    Installments =  new[] {
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.052m, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.15m, Exists = true },
-                    }.ToList()
-                },
-                new CreditCardViewModel
-                {
-                    Code = "maximum",
-                    Installments =  new[] {
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.06m, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.15m, Exists = true },
-                    }.ToList()
-                },
-                new CreditCardViewModel
-                {
-                    Code = "axess",
-                    Installments =  new[] {
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.06m, Exists = true },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1, Exists = false },
-                        new InstallmentViewModel { Rate = 1.15m, Exists = true },
-                    }.ToList()
-                },
-            };
+            ViewBag.Page = page;
             return View(model);
         }
 

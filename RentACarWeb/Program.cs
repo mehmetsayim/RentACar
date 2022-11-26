@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using RentACarData;
 using RentACarWeb;
+using ServiceStack.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -117,7 +119,11 @@ app.MapControllerRoute(
     pattern: "c/{name}/{id}/{page?}", defaults: new { controller = "Home", action = "Category" });
 
 app.MapControllerRoute(
-    name: "product",
-    pattern: "p/{name}/{id}", defaults: new { controller = "Home", action = "Product" });
+    name: "car",
+    pattern: "p/{name}/{id}", defaults: new { controller = "Home", action = "Car" });
+
+app.MapControllerRoute(
+    name: "detay",
+    pattern: "d/{name}/{id}", defaults: new { controller = "Home", action = "Detay" });
 
 app.Run();
