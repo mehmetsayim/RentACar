@@ -21,7 +21,7 @@
                     <div class="row align-items-center justify-content-center">
                         <div class="col-lg-6 text-center">
                             <h1>Kiralık Araçlarımız</h1>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -34,93 +34,61 @@
                     @foreach (var car in Model)
                     {
                         <div class="col-lg-3 col-md-6 mb-4">
-                            @*<div class="item-1">
-                                <a href="#"><img src="@car.ImageSrc" alt="Image" class="img-fluid"></a>
-                                <div class="item-1-contents">
-                                    <div class="text-center">
-                                        <h3><a href="#">@car.Name</a></h3>
-                                        <div class="rating">
-                                            <span class="icon-star text-warning"></span>
-                                            <span class="icon-star text-warning"></span>
-                                            <span class="icon-star text-warning"></span>
-                                            <span class="icon-star text-warning"></span>
-                                            <span class="icon-star text-warning"></span>
-                                        </div>
-                                        <div class="rent-price"><span>@car.Price</span>₺</div>
-                                    </div>
-                                    <ul class="specs">
-                                        <li>
-                                            <span>Kapı</span>
-                                            <span class="spec">4</span>
-                                        </li>
-                                        <li>
-                                            <span>Koltuk</span>
-                                            <span class="spec">5</span>
-                                        </li>
-                                        <li>
-                                            <span>Vites</span>
-                                            <span class="spec">Otomatik</span>
-                                        </li>
-                                        <li>
-                                            <span>Minimum Yaşı</span>
-                                            <span class="spec">18 Yaş</span>
-                                        </li>
-                                    </ul>*@
-                                    <div class="d-flex action">
-                                        <partial name="_CarBoxPartial" model="car">
-                                    </div>
-                                </div>
-                           @* </div>
-                        </div>*@
+                           
+                            <div class="d-flex action">
+                                <partial name="_CarBoxPartial" model="car">
+                            </div>
+
+                        </div>
+                       
                     }
 
 
-                    <div class="col-12 text-center">
-                        <span class="p-3">1</span>
-                        <a href="#" class="p-3">2</a>
-                        <a href="#" class="p-3">3</a>
-                        <a href="#" class="p-3">4</a>
-                    </div>
+                    
+                    
                 </div>
-            </div>
-        </div>
 
+                
+            </div>
+            
+        </div>
+      
 
 
 
         <div class="container site-section mb-5">
             <div class="row justify-content-center text-center">
                 <div class="col-7 text-center mb-5">
-                    <h2>How it works</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+                    <h2>Nasıl Çalışıyoruz</h2>
+                    <p>Pazara giriş yaptığı 1974 yılından bu yana sektörünün lideri olan Rent Acar, ülkenin en yaygın araç kiralama ağına ve en geniş araç filosuna sahiptir.</p>
                 </div>
             </div>
             <div class="how-it-works d-flex">
                 <div class="step">
                     <span class="number"><span>01</span></span>
-                    <span class="caption">Time &amp; Place</span>
+                    <span class="caption">Zaman &amp; Yer</span>
                 </div>
                 <div class="step">
                     <span class="number"><span>02</span></span>
-                    <span class="caption">Car</span>
+                    <span class="caption">Araba</span>
                 </div>
                 <div class="step">
                     <span class="number"><span>03</span></span>
-                    <span class="caption">Details</span>
+                    <span class="caption">Detaylar</span>
                 </div>
                 <div class="step">
                     <span class="number"><span>04</span></span>
-                    <span class="caption">Checkout</span>
+                    <span class="caption">Ödeme</span>
                 </div>
                 <div class="step">
                     <span class="number"><span>05</span></span>
-                    <span class="caption">Done</span>
+                    <span class="caption">Tamamlandı</span>
                 </div>
 
             </div>
         </div>
     </div>
 
-       
-        
+
+
 </body>

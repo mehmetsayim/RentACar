@@ -1,4 +1,4 @@
-﻿@model RentACarData.Category
+﻿@model Category
 @using X.PagedList.Mvc; //import this so we get our HTML Helper
 @using X.PagedList; //import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)
 
@@ -9,31 +9,31 @@
     ViewData["Title"] = Model.Name;
     var page = (int?)ViewBag.Page ?? 1;
     var pageSize = 12;
-    var products = Model.Cars.Where(p => p.Enabled).ToPagedList(page, pageSize);
+    var cars = Model.Cars.Where(p => p.Enabled).ToPagedList(page, pageSize);
 }
 <h2>@Model.MainMenu.Name / @Model.Name</h2>
 <hr />
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
-    @foreach (var product in products)
+    @foreach (var car in cars)
     {
         <div class="col">
-            <div class="card h-100 product-card">
-                <img class="card-img-top" src="@product.ImageSrc" />
+            <div class="card h-100 car-card">
+                <img class="card-img-top" src="@car.ImageSrc" />
                 <div class="card-body">
-                    <h4 class="card-title">@product.Name</h4>
+                    <h4 class="card-title">@car.Name</h4>
                     <div class="d-flex align-items-center">
                         <div>
-                            <h2 class="card-text text-success">@product.DiscountedPrice.Value.ToString("c2")</h2>
-                            <p class="card-text text-decoration-line-through small">@product.Price.ToString("c2")</p>
+                            <h2 class="card-text text-success">@car.DiscountedPrice.Value.ToString("c2")</h2>
+                            <p class="card-text text-decoration-line-through small">@car.Price.ToString("c2")</p>
                         </div>
-                        <a asp-route="product" asp-route-name="@product.Name.ToSafeUrlString()" asp-route-id="@product.Id" class="btn btn-info ms-auto">
+                        <a asp-route="car" asp-route-name="@car.Name.ToSafeUrlString()" asp-route-id="@car.Id" class="btn btn-info ms-auto">
                             <i class="fa fa-search"></i>
                             İncele
                         </a>
                     </div>
                     <div class="bg-success shadow-sm text-white h2 p-2 position-absolute" style="top: 10px; right: 10px;">
-                        %@product.DiscountRate
+                        %@car.DiscountRate
                         <div class="small" style="font-size: .85rem;">indirim</div>
                     </div>
                 </div>
@@ -43,20 +43,20 @@
 </div>
 <nav class="d-flex justify-content-center py-2">
     <ul class="pagination">
-        <li class="page-item @(products.HasPreviousPage ? "": "disabled")">
-            <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@(products.HasPreviousPage ? page-1 : page)">
+        <li class="page-item @(cars.HasPreviousPage ? "": "disabled")">
+            <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@(cars.HasPreviousPage ? page-1 : page)">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        @for (int i = 1; i <= products.PageCount; i++)
+        @for (int i = 1; i <= cars.PageCount; i++)
         {
             <li class="page-item @(i == page ? "active" : "")">
                 <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@i">@(i)</a>
             </li>
         }
 
-        <li class="page-item @(products.HasNextPage ? "": "disabled")">
-            <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@(products.HasNextPage ? page+1 : page)">
+        <li class="page-item @(cars.HasNextPage ? "": "disabled")">
+            <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" asp-route-page="@(cars.HasNextPage ? page+1 : page)">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>

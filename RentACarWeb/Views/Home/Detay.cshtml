@@ -39,10 +39,8 @@
         <h2 class="text-success">
             @Model.DiscountedPrice.Value.ToString("c2")
         </h2>
-        <small class="small text-decoration-line-through">@Model.Price.ToString("c2")</small>
-        <div class="py-2 bg-light text-secondary">
-            <i class="fa fa-truck"></i> @(configuration.GetValue<decimal>("DeliveryDiscountTreshold"))₺ üzeri alışverişlerde kargo bedava
-        </div>
+        <small class="small text-decoration-line-through">@Model.Price.ToString("c2")</small> <br />
+        
         <a class="btn btn-success py-2" asp-action="AddToCart" asp-route-id="@Model.Id">
             <i class="fa fa-shopping-cart"></i>
             Sepete Ekle
@@ -55,11 +53,7 @@
             Açıklamalar
         </button>
     </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="installments-tab" data-bs-toggle="tab" data-bs-target="#installments-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-            Taksit Seçenekleri
-        </button>
-    </li>
+    
     <li class="nav-item" role="presentation">
         <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
             Yorumlar (@Model.Comments.Count(p => p.Enabled || p.ApplicationUserId == Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))).ToString("n0"))

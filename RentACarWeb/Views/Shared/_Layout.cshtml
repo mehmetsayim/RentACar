@@ -25,99 +25,122 @@
 
 </head>
 
-<body >
-                
-       <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="Home/Index">Araç<span>Kirala</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+<body>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-               <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">Anasayfa</a></li>
-	          <li class="nav-item"><a asp-controller="Home" asp-action="ContactUs"class="nav-link">İletişim</a></li>
-	          <li class="nav-item"><a asp-controller="Home" asp-action="AboutUs"class="nav-link">Hakkımızda</a></li>
-             <li class="nav-item"><a asp-controller="Home" asp-action="Car" class="nav-link">Araba Listesi</a></li>   
-                  <li class="nav-item">  @await Component.InvokeAsync("UserBar")</li>  
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-             
-        <div class="container-fluid mb-5 p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" width="160" height="80" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
 
-            @RenderBody()
-
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link ">Anasayfa</a></li>
+                    <li class="nav-item"><a asp-controller="Home" asp-action="ContactUs" class="nav-link">İletişim</a></li>
+                    <li class="nav-item"><a asp-controller="Home" asp-action="AboutUs" class="nav-link">Hakkımızda</a></li>
+                    <li class="nav-item"><a asp-controller="Home" asp-action="Car" class="nav-link">Araba Listesi</a></li>
+                    <li class="nav-item">  @await Component.InvokeAsync("UserBar")</li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <footer class="site-footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <h2 class="footer-heading mb-4">About Us</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-                    </div>
-                    <div class="col-lg-8 ml-auto">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <h2 class="footer-heading mb-4">Quick Links</h2>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-3">
-                                <h2 class="footer-heading mb-4">Quick Links</h2>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-3">
-                                <h2 class="footer-heading mb-4">Quick Links</h2>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-3">
-                                <h2 class="footer-heading mb-4">Quick Links</h2>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container-fluid mb-5 p-0">
+
+        @RenderBody()
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h2 class="footer-heading mb-4">Sosyal Medya</h2>
+
+                    <a href="https://www.instagram.com/acarrentacar/?hl=en&ysclid=lb4yt9xrcn167493591" class="instagram"><i class="fa-brands fa-instagram"></i><span>instagram</span></a><br />
+                    <a href="" class="pinterest"><i class="fa-brands fa-pinterest"></i><span>pinterest</span></a><br />
+                    <a href="" class="facebook"><i class="fa-brands fa-facebook"></i><span>facebook</span></a><br />
+                    <a href="" class="twitter"><i class="fa-brands fa-twitter"></i><span>twitter</span></a><br />
+                    <a href="https://www.youtube.com/watch?v=K4H87n__nq0" class="youtube"><i class="fa-brands fa-youtube"></i><span>youtube</span></a><br />
+                    <a href="" class="tumblr"><i class="fa-brands fa-tumblr-square"></i><span>tumblr</span></a>
+
+
                 </div>
-                <div class="row pt-5 mt-5 text-center">
-                    <div class="col-md-12">
-                        <div class="border-top pt-5">
-                            <p>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
+                <div class="col-lg-8 ml-auto">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <h2 class="footer-heading mb-4">Hızlı Linkler</h2>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Home" asp-action="AboutUs">Hakkımızda</a></li>
+                                <li><a href="#">Görüşler</a></li>
+                                <li>
+                                    <a href="#">
+                                        Kullanım Şartları
+                                    </a>
+                                </li>
+                                <li><a href="#">Gizlilik</a></li>
+                                <li><a asp-controller="Home" asp-action="ContactUs">İletişim</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3">
+                            <h2 class="footer-heading mb-4">Hızlı Linkler</h2>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Home" asp-action="AboutUs">Hakkımızda</a></li>
+                                <li><a href="#">Görüşler</a></li>
+                                <li>
+                                    <a href="#">
+                                        Kullanım Şartları
+                                    </a>
+                                </li>
+                                <li><a href="#">Gizlilik</a></li>
+                                <li><a asp-controller="Home" asp-action="ContactUs">İletişim</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3">
+                            <h2 class="footer-heading mb-4">Hızlı Linkler</h2>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Home" asp-action="AboutUs">Hakkımızda</a></li>
+                                <li><a href="#">Görüşler</a></li>
+                                <li>
+                                    <a href="#">
+                                        Kullanım Şartları
+                                    </a>
+                                </li>
+                                <li><a href="#">Gizlilik</a></li>
+                                <li><a asp-controller="Home" asp-action="ContactUs">İletişim</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3">
+                            <h2 class="footer-heading mb-4">Hızlı Linkler</h2>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Home" asp-action="AboutUs">Hakkımızda</a></li>
+                                <li><a href="#">Görüşler</a></li>
+                                <li>
+                                    <a href="#">
+                                        Kullanım Şartları
+                                    </a>
+                                </li>
+                                <li><a href="#">Gizlilik</a></li>
+                                <li><a asp-controller="Home" asp-action="AboutUs">İletişim</a></li>
+                            </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </footer>
+            <div class="row pt-5 mt-5 text-center">
+                <div class="col-md-12">
+                    <div class="border-top pt-5">
+                        <p>
+                            Copyright &copy; @DateTime.Today.Year AraçKirala'nın Tüm hakları saklıdır.
+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
     </div>
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/popper.min.js"></script>

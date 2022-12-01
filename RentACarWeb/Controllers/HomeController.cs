@@ -83,13 +83,14 @@ namespace RentACarWeb.Controllers
             var model = await context.Categories.FindAsync(id);
             ViewBag.Page = page;
             return View(model);
-        }  
+        }
 
         [HttpGet]
 
+
         public IActionResult Car()
         {
-            List<Car> model = context.Cars.ToList();
+            var model = context.Cars.ToList();
             return View(model);
         }
 
