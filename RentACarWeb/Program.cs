@@ -125,5 +125,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "detay",
     pattern: "d/{name}/{id}", defaults: new { controller = "Home", action = "Detay" });
+app.MapControllerRoute(
+    name: "detay2",
+    pattern: "d/{name}/{id}", defaults: new { controller = "Home", action = "Detay2" });
 
 app.Run();
